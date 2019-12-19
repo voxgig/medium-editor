@@ -1,6 +1,5 @@
 .medium-toolbar-arrow-under:after {
-  border-color: #2f1e07 transparent transparent transparent;
-  top: 60px; }
+  border-color: #2f1e07 transparent transparent transparent; }
 
 .medium-toolbar-arrow-over:before {
   border-color: transparent transparent #2f1e07 transparent; }
@@ -17,8 +16,7 @@
     color: #ffedd5;
     height: 60px;
     min-width: 60px;
-    -webkit-transition: background-color .2s ease-in, color .2s ease-in;
-            transition: background-color .2s ease-in, color .2s ease-in; }
+    transition: background-color .2s ease-in, color .2s ease-in; }
     .medium-editor-toolbar li button:hover {
       background-color: #030200;
       color: #ffedd5; }
