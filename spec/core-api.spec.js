@@ -155,8 +155,11 @@ describe('Core-API', function () {
             fireEvent(button, 'click');
 
             // Edge breaks this into 3 separate <u> tags for some reason...
+            var htmltext = ((editor.elements[0].innerHTML) + '');
+            htmltext = htmltext.replace(/<strike>/g, '<s>');
+            htmltext = htmltext.replace(/<\/strike>/g, '</s>');
             var regex = new RegExp('^<u>lorem (<i><s>|<s><i>|</u><i><u><s>)ipsum(</i></s>|</s></i>|</s></u></i><u>) dolor</u>$');
-            expect(editor.elements[0].innerHTML).toMatch(regex);
+            expect(htmltext).toMatch(regex);
         });
     });
 

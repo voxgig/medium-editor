@@ -44,7 +44,7 @@ describe('Full Content Action TestCase', function () {
 
             // Ensure the selection is still maintained
             editor.execAction('strikethrough');
-            expect(this.el.innerHTML).toBe('<p><u>lorem <s>ipsum</s> dolor</u></p>');
+            expect(this.el.innerHTML.replace(/<strike>/g, '<s>').replace(/<\/strike>/g, '<\/s>')).toBe('<p><u>lorem <s>ipsum</s> dolor</u></p>');
         });
 
         it('should justify all contents including multiple block elements', function () {
