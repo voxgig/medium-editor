@@ -16,7 +16,8 @@
             },
             useQueryState: true,
             contentDefault: '<b>B</b>',
-            contentFA: '<i class="fa fa-bold"></i>'
+            contentFA: '<i class="fa fa-bold"></i>',
+            contentMI: '<i class="material-icons">format_bold</i>'
         },
         'italic': {
             name: 'italic',
@@ -29,7 +30,8 @@
             },
             useQueryState: true,
             contentDefault: '<b><i>I</i></b>',
-            contentFA: '<i class="fa fa-italic"></i>'
+            contentFA: '<i class="fa fa-italic"></i>',
+            contentMI: '<i class="material-icons">format_italic</i>'
         },
         'underline': {
             name: 'underline',
@@ -42,7 +44,8 @@
             },
             useQueryState: true,
             contentDefault: '<b><u>U</u></b>',
-            contentFA: '<i class="fa fa-underline"></i>'
+            contentFA: '<i class="fa fa-underline"></i>',
+            contentMI: '<i class="material-icons">format_underline</i>'
         },
         'strikethrough': {
             name: 'strikethrough',
@@ -55,7 +58,8 @@
             },
             useQueryState: true,
             contentDefault: '<s>A</s>',
-            contentFA: '<i class="fa fa-strikethrough"></i>'
+            contentFA: '<i class="fa fa-strikethrough"></i>',
+            contentMI: '<i class="material-icons">format_strikethrough</i>'
         },
         'superscript': {
             name: 'superscript',
@@ -66,7 +70,8 @@
                https://github.com/guardian/scribe/blob/master/BROWSERINCONSISTENCIES.md#documentquerycommandstate */
             // useQueryState: true
             contentDefault: '<b>x<sup>1</sup></b>',
-            contentFA: '<i class="fa fa-superscript"></i>'
+            contentFA: '<i class="fa fa-superscript"></i>',
+            contentMI: '<i class="material-icons">arrow_drop_up</i>'
         },
         'subscript': {
             name: 'subscript',
@@ -77,7 +82,8 @@
                https://github.com/guardian/scribe/blob/master/BROWSERINCONSISTENCIES.md#documentquerycommandstate */
             // useQueryState: true
             contentDefault: '<b>x<sub>1</sub></b>',
-            contentFA: '<i class="fa fa-subscript"></i>'
+            contentFA: '<i class="fa fa-subscript"></i>',
+            contentMI: '<i class="material-icons">arrow_drop_down</i>'
         },
         'image': {
             name: 'image',
@@ -85,7 +91,8 @@
             aria: 'image',
             tagNames: ['img'],
             contentDefault: '<b>image</b>',
-            contentFA: '<i class="fa fa-picture-o"></i>'
+            contentFA: '<i class="fa fa-picture-o"></i>',
+            contentMI: '<i class="material-icons">add_photo_alternate</i>'
         },
         'html': {
             name: 'html',
@@ -93,7 +100,8 @@
             aria: 'evaluate html',
             tagNames: ['iframe', 'object'],
             contentDefault: '<b>html</b>',
-            contentFA: '<i class="fa fa-code"></i>'
+            contentFA: '<i class="fa fa-code"></i>',
+            contentMI: '<i class="material-icons">format_code</i>'
         },
         'orderedlist': {
             name: 'orderedlist',
@@ -102,7 +110,8 @@
             tagNames: ['ol'],
             useQueryState: true,
             contentDefault: '<b>1.</b>',
-            contentFA: '<i class="fa fa-list-ol"></i>'
+            contentFA: '<i class="fa fa-list-ol"></i>',
+            contentMI: '<i class="material-icons">format_list_numbered</i>'
         },
         'unorderedlist': {
             name: 'unorderedlist',
@@ -111,7 +120,8 @@
             tagNames: ['ul'],
             useQueryState: true,
             contentDefault: '<b>&bull;</b>',
-            contentFA: '<i class="fa fa-list-ul"></i>'
+            contentFA: '<i class="fa fa-list-ul"></i>',
+            contentMI: '<i class="material-icons">format_list_bulleted</i>'
         },
         'indent': {
             name: 'indent',
@@ -119,7 +129,8 @@
             aria: 'indent',
             tagNames: [],
             contentDefault: '<b>&rarr;</b>',
-            contentFA: '<i class="fa fa-indent"></i>'
+            contentFA: '<i class="fa fa-indent"></i>',
+            contentMI: '<i class="material-icons">format_indent_increase</i>'
         },
         'outdent': {
             name: 'outdent',
@@ -127,7 +138,8 @@
             aria: 'outdent',
             tagNames: [],
             contentDefault: '<b>&larr;</b>',
-            contentFA: '<i class="fa fa-outdent"></i>'
+            contentFA: '<i class="fa fa-outdent"></i>',
+            contentMI: '<i class="material-icons">format_indent_decrease</i>'
         },
         'justifyCenter': {
             name: 'justifyCenter',
@@ -139,7 +151,8 @@
                 value: 'center'
             },
             contentDefault: '<b>C</b>',
-            contentFA: '<i class="fa fa-align-center"></i>'
+            contentFA: '<i class="fa fa-align-center"></i>',
+            contentMI: '<i class="material-icons">format_align_center</i>'
         },
         'justifyFull': {
             name: 'justifyFull',
@@ -151,7 +164,8 @@
                 value: 'justify'
             },
             contentDefault: '<b>J</b>',
-            contentFA: '<i class="fa fa-align-justify"></i>'
+            contentFA: '<i class="fa fa-align-justify"></i>',
+            contentMI: '<i class="material-icons">format_align_justify</i>'
         },
         'justifyLeft': {
             name: 'justifyLeft',
@@ -163,7 +177,8 @@
                 value: 'left'
             },
             contentDefault: '<b>L</b>',
-            contentFA: '<i class="fa fa-align-left"></i>'
+            contentFA: '<i class="fa fa-align-left"></i>',
+            contentMI: '<i class="material-icons">format_align_left</i>'
         },
         'justifyRight': {
             name: 'justifyRight',
@@ -175,7 +190,8 @@
                 value: 'right'
             },
             contentDefault: '<b>R</b>',
-            contentFA: '<i class="fa fa-align-right"></i>'
+            contentFA: '<i class="fa fa-align-right"></i>',
+            contentMI: '<i class="material-icons">format_align_right</i>'
         },
         // Known inline elements that are not removed, or not removed consistantly across browsers:
         // <span>, <label>, <br>
@@ -184,7 +200,8 @@
             aria: 'remove formatting',
             action: 'removeFormat',
             contentDefault: '<b>X</b>',
-            contentFA: '<i class="fa fa-eraser"></i>'
+            contentFA: '<i class="fa fa-eraser"></i>',
+            contentMI: '<i class="material-icons">format_clear</i>'
         },
 
         /***** Buttons for appending block elements (append-<element> action) *****/
@@ -195,7 +212,8 @@
             aria: 'blockquote',
             tagNames: ['blockquote'],
             contentDefault: '<b>&ldquo;</b>',
-            contentFA: '<i class="fa fa-quote-right"></i>'
+            contentFA: '<i class="fa fa-quote-right"></i>',
+            contentMI: '<i class="material-icons">format_quote</i>'
         },
         'pre': {
             name: 'pre',
@@ -203,7 +221,8 @@
             aria: 'preformatted text',
             tagNames: ['pre'],
             contentDefault: '<b>0101</b>',
-            contentFA: '<i class="fa fa-code fa-lg"></i>'
+            contentFA: '<i class="fa fa-code fa-lg"></i>',
+            contentMI: '<b>0101</b>'
         },
         'h1': {
             name: 'h1',
@@ -211,7 +230,8 @@
             aria: 'header type one',
             tagNames: ['h1'],
             contentDefault: '<b>H1</b>',
-            contentFA: '<i class="fa fa-header"><sup>1</sup>'
+            contentFA: '<i class="fa fa-header"><sup>1</sup>',
+            contentMI: '<b>H1</b>'
         },
         'h2': {
             name: 'h2',
@@ -219,7 +239,8 @@
             aria: 'header type two',
             tagNames: ['h2'],
             contentDefault: '<b>H2</b>',
-            contentFA: '<i class="fa fa-header"><sup>2</sup>'
+            contentFA: '<i class="fa fa-header"><sup>2</sup>',
+            contentMI: '<b>H2</b>'
         },
         'h3': {
             name: 'h3',
@@ -227,7 +248,8 @@
             aria: 'header type three',
             tagNames: ['h3'],
             contentDefault: '<b>H3</b>',
-            contentFA: '<i class="fa fa-header"><sup>3</sup>'
+            contentFA: '<i class="fa fa-header"><sup>3</sup>',
+            contentMI: '<b>H3</b>'
         },
         'h4': {
             name: 'h4',
@@ -235,7 +257,8 @@
             aria: 'header type four',
             tagNames: ['h4'],
             contentDefault: '<b>H4</b>',
-            contentFA: '<i class="fa fa-header"><sup>4</sup>'
+            contentFA: '<i class="fa fa-header"><sup>4</sup>',
+            contentMI: '<b>H4</b>'
         },
         'h5': {
             name: 'h5',
@@ -243,7 +266,8 @@
             aria: 'header type five',
             tagNames: ['h5'],
             contentDefault: '<b>H5</b>',
-            contentFA: '<i class="fa fa-header"><sup>5</sup>'
+            contentFA: '<i class="fa fa-header"><sup>5</sup>',
+            contentMI: '<b>H5</b>'
         },
         'h6': {
             name: 'h6',
@@ -251,7 +275,8 @@
             aria: 'header type six',
             tagNames: ['h6'],
             contentDefault: '<b>H6</b>',
-            contentFA: '<i class="fa fa-header"><sup>6</sup>'
+            contentFA: '<i class="fa fa-header"><sup>6</sup>',
+            contentMI: '<b>H6</b>'
         }
     };
 

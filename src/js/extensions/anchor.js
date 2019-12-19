@@ -44,6 +44,7 @@
         tagNames: ['a'],
         contentDefault: '<b>#</b>',
         contentFA: '<i class="fa fa-link"></i>',
+        contentMI: '<i class="material-icons">insert_link</i>',
 
         init: function () {
             MediumEditor.extensions.form.prototype.init.apply(this, arguments);
@@ -94,13 +95,24 @@
 
             template.push(
                 '<a href="#" class="medium-editor-toolbar-save">',
-                this.getEditorOption('buttonLabels') === 'fontawesome' ? '<i class="fa fa-check"></i>' : this.formSaveLabel,
+                MediumEditor.util.resolveIcon(this, {
+                    st: this.formSaveLabel,
+                    fa: '<i class="fa fa-check"></i>',
+                    mi: '<i class="material-icons">check</i>'
+                }),
                 '</a>'
             );
 
-            template.push('<a href="#" class="medium-editor-toolbar-close">',
-                this.getEditorOption('buttonLabels') === 'fontawesome' ? '<i class="fa fa-times"></i>' : this.formCloseLabel,
-                '</a>');
+            template.push(
+                '<a href="#" class="medium-editor-toolbar-close">',
+                MediumEditor.util.resolveIcon(this, {
+                    st: this.formSaveLabel,
+                    fa: '<i class="fa fa-times"></i>',
+                    mi: '<i class="material-icons">close</i>'
+                }),
+
+                '</a>'
+            );
 
             // both of these options are slightly moot with the ability to
             // override the various form buildup/serialize functions.

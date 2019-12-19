@@ -1562,6 +1562,12 @@ MediumEditor.extensions = {};
             }
 
             return _s4() + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + _s4() + _s4();
+        },
+
+        resolveIcon: function (ext, iconmap) {
+            var buttonLabels = ext.getEditorOption('buttonLabels'),
+                btnlabelcode = buttonLabels === 'fontawesome' ? 'fa' : buttonLabels === 'fa' ? 'fa' : buttonLabels === 'material' ? 'mi' : buttonLabels === 'mi' ? 'mi' : 'st';
+            return iconmap[btnlabelcode];
         }
     };
 
@@ -3196,6 +3202,12 @@ MediumEditor.extensions = {};
          */
         contentFA: undefined,
 
+        /* contentMI: [string]
+         * The innerHTML to use for the content of the button
+         * if the `buttonLabels` option for MediumEditor is set to 'material'
+         */
+        contentMI: undefined,
+
         /* classList: [Array]
          * An array of classNames (strings) to be added to the button
          */
@@ -3274,9 +3286,14 @@ MediumEditor.extensions = {};
                 }, this);
             }
 
-            if (buttonLabels === 'fontawesome' && this.contentFA) {
+            if ((buttonLabels === 'fontawesome' || buttonLabels === 'fa') && this.contentFA) {
                 content = this.contentFA;
             }
+
+            if ((buttonLabels === 'material' || buttonLabels === 'mi') && this.contentMI) {
+                content = this.contentMI;
+            }
+
             button.innerHTML = content;
             return button;
         },
@@ -3373,7 +3390,8 @@ MediumEditor.extensions = {};
             },
             useQueryState: true,
             contentDefault: '<b>B</b>',
-            contentFA: '<i class="fa fa-bold"></i>'
+            contentFA: '<i class="fa fa-bold"></i>',
+            contentMI: '<i class="material-icons">format_bold</i>'
         },
         'italic': {
             name: 'italic',
@@ -3386,7 +3404,8 @@ MediumEditor.extensions = {};
             },
             useQueryState: true,
             contentDefault: '<b><i>I</i></b>',
-            contentFA: '<i class="fa fa-italic"></i>'
+            contentFA: '<i class="fa fa-italic"></i>',
+            contentMI: '<i class="material-icons">format_italic</i>'
         },
         'underline': {
             name: 'underline',
@@ -3399,7 +3418,8 @@ MediumEditor.extensions = {};
             },
             useQueryState: true,
             contentDefault: '<b><u>U</u></b>',
-            contentFA: '<i class="fa fa-underline"></i>'
+            contentFA: '<i class="fa fa-underline"></i>',
+            contentMI: '<i class="material-icons">format_underline</i>'
         },
         'strikethrough': {
             name: 'strikethrough',
@@ -3412,7 +3432,8 @@ MediumEditor.extensions = {};
             },
             useQueryState: true,
             contentDefault: '<s>A</s>',
-            contentFA: '<i class="fa fa-strikethrough"></i>'
+            contentFA: '<i class="fa fa-strikethrough"></i>',
+            contentMI: '<i class="material-icons">format_strikethrough</i>'
         },
         'superscript': {
             name: 'superscript',
@@ -3423,7 +3444,8 @@ MediumEditor.extensions = {};
                https://github.com/guardian/scribe/blob/master/BROWSERINCONSISTENCIES.md#documentquerycommandstate */
             // useQueryState: true
             contentDefault: '<b>x<sup>1</sup></b>',
-            contentFA: '<i class="fa fa-superscript"></i>'
+            contentFA: '<i class="fa fa-superscript"></i>',
+            contentMI: '<i class="material-icons">arrow_drop_up</i>'
         },
         'subscript': {
             name: 'subscript',
@@ -3434,7 +3456,8 @@ MediumEditor.extensions = {};
                https://github.com/guardian/scribe/blob/master/BROWSERINCONSISTENCIES.md#documentquerycommandstate */
             // useQueryState: true
             contentDefault: '<b>x<sub>1</sub></b>',
-            contentFA: '<i class="fa fa-subscript"></i>'
+            contentFA: '<i class="fa fa-subscript"></i>',
+            contentMI: '<i class="material-icons">arrow_drop_down</i>'
         },
         'image': {
             name: 'image',
@@ -3442,7 +3465,8 @@ MediumEditor.extensions = {};
             aria: 'image',
             tagNames: ['img'],
             contentDefault: '<b>image</b>',
-            contentFA: '<i class="fa fa-picture-o"></i>'
+            contentFA: '<i class="fa fa-picture-o"></i>',
+            contentMI: '<i class="material-icons">add_photo_alternate</i>'
         },
         'html': {
             name: 'html',
@@ -3450,7 +3474,8 @@ MediumEditor.extensions = {};
             aria: 'evaluate html',
             tagNames: ['iframe', 'object'],
             contentDefault: '<b>html</b>',
-            contentFA: '<i class="fa fa-code"></i>'
+            contentFA: '<i class="fa fa-code"></i>',
+            contentMI: '<i class="material-icons">format_code</i>'
         },
         'orderedlist': {
             name: 'orderedlist',
@@ -3459,7 +3484,8 @@ MediumEditor.extensions = {};
             tagNames: ['ol'],
             useQueryState: true,
             contentDefault: '<b>1.</b>',
-            contentFA: '<i class="fa fa-list-ol"></i>'
+            contentFA: '<i class="fa fa-list-ol"></i>',
+            contentMI: '<i class="material-icons">format_list_numbered</i>'
         },
         'unorderedlist': {
             name: 'unorderedlist',
@@ -3468,7 +3494,8 @@ MediumEditor.extensions = {};
             tagNames: ['ul'],
             useQueryState: true,
             contentDefault: '<b>&bull;</b>',
-            contentFA: '<i class="fa fa-list-ul"></i>'
+            contentFA: '<i class="fa fa-list-ul"></i>',
+            contentMI: '<i class="material-icons">format_list_bulleted</i>'
         },
         'indent': {
             name: 'indent',
@@ -3476,7 +3503,8 @@ MediumEditor.extensions = {};
             aria: 'indent',
             tagNames: [],
             contentDefault: '<b>&rarr;</b>',
-            contentFA: '<i class="fa fa-indent"></i>'
+            contentFA: '<i class="fa fa-indent"></i>',
+            contentMI: '<i class="material-icons">format_indent_increase</i>'
         },
         'outdent': {
             name: 'outdent',
@@ -3484,7 +3512,8 @@ MediumEditor.extensions = {};
             aria: 'outdent',
             tagNames: [],
             contentDefault: '<b>&larr;</b>',
-            contentFA: '<i class="fa fa-outdent"></i>'
+            contentFA: '<i class="fa fa-outdent"></i>',
+            contentMI: '<i class="material-icons">format_indent_decrease</i>'
         },
         'justifyCenter': {
             name: 'justifyCenter',
@@ -3496,7 +3525,8 @@ MediumEditor.extensions = {};
                 value: 'center'
             },
             contentDefault: '<b>C</b>',
-            contentFA: '<i class="fa fa-align-center"></i>'
+            contentFA: '<i class="fa fa-align-center"></i>',
+            contentMI: '<i class="material-icons">format_align_center</i>'
         },
         'justifyFull': {
             name: 'justifyFull',
@@ -3508,7 +3538,8 @@ MediumEditor.extensions = {};
                 value: 'justify'
             },
             contentDefault: '<b>J</b>',
-            contentFA: '<i class="fa fa-align-justify"></i>'
+            contentFA: '<i class="fa fa-align-justify"></i>',
+            contentMI: '<i class="material-icons">format_align_justify</i>'
         },
         'justifyLeft': {
             name: 'justifyLeft',
@@ -3520,7 +3551,8 @@ MediumEditor.extensions = {};
                 value: 'left'
             },
             contentDefault: '<b>L</b>',
-            contentFA: '<i class="fa fa-align-left"></i>'
+            contentFA: '<i class="fa fa-align-left"></i>',
+            contentMI: '<i class="material-icons">format_align_left</i>'
         },
         'justifyRight': {
             name: 'justifyRight',
@@ -3532,7 +3564,8 @@ MediumEditor.extensions = {};
                 value: 'right'
             },
             contentDefault: '<b>R</b>',
-            contentFA: '<i class="fa fa-align-right"></i>'
+            contentFA: '<i class="fa fa-align-right"></i>',
+            contentMI: '<i class="material-icons">format_align_right</i>'
         },
         // Known inline elements that are not removed, or not removed consistantly across browsers:
         // <span>, <label>, <br>
@@ -3541,7 +3574,8 @@ MediumEditor.extensions = {};
             aria: 'remove formatting',
             action: 'removeFormat',
             contentDefault: '<b>X</b>',
-            contentFA: '<i class="fa fa-eraser"></i>'
+            contentFA: '<i class="fa fa-eraser"></i>',
+            contentMI: '<i class="material-icons">format_clear</i>'
         },
 
         /***** Buttons for appending block elements (append-<element> action) *****/
@@ -3552,7 +3586,8 @@ MediumEditor.extensions = {};
             aria: 'blockquote',
             tagNames: ['blockquote'],
             contentDefault: '<b>&ldquo;</b>',
-            contentFA: '<i class="fa fa-quote-right"></i>'
+            contentFA: '<i class="fa fa-quote-right"></i>',
+            contentMI: '<i class="material-icons">format_quote</i>'
         },
         'pre': {
             name: 'pre',
@@ -3560,7 +3595,8 @@ MediumEditor.extensions = {};
             aria: 'preformatted text',
             tagNames: ['pre'],
             contentDefault: '<b>0101</b>',
-            contentFA: '<i class="fa fa-code fa-lg"></i>'
+            contentFA: '<i class="fa fa-code fa-lg"></i>',
+            contentMI: '<b>0101</b>'
         },
         'h1': {
             name: 'h1',
@@ -3568,7 +3604,8 @@ MediumEditor.extensions = {};
             aria: 'header type one',
             tagNames: ['h1'],
             contentDefault: '<b>H1</b>',
-            contentFA: '<i class="fa fa-header"><sup>1</sup>'
+            contentFA: '<i class="fa fa-header"><sup>1</sup>',
+            contentMI: '<b>H1</b>'
         },
         'h2': {
             name: 'h2',
@@ -3576,7 +3613,8 @@ MediumEditor.extensions = {};
             aria: 'header type two',
             tagNames: ['h2'],
             contentDefault: '<b>H2</b>',
-            contentFA: '<i class="fa fa-header"><sup>2</sup>'
+            contentFA: '<i class="fa fa-header"><sup>2</sup>',
+            contentMI: '<b>H2</b>'
         },
         'h3': {
             name: 'h3',
@@ -3584,7 +3622,8 @@ MediumEditor.extensions = {};
             aria: 'header type three',
             tagNames: ['h3'],
             contentDefault: '<b>H3</b>',
-            contentFA: '<i class="fa fa-header"><sup>3</sup>'
+            contentFA: '<i class="fa fa-header"><sup>3</sup>',
+            contentMI: '<b>H3</b>'
         },
         'h4': {
             name: 'h4',
@@ -3592,7 +3631,8 @@ MediumEditor.extensions = {};
             aria: 'header type four',
             tagNames: ['h4'],
             contentDefault: '<b>H4</b>',
-            contentFA: '<i class="fa fa-header"><sup>4</sup>'
+            contentFA: '<i class="fa fa-header"><sup>4</sup>',
+            contentMI: '<b>H4</b>'
         },
         'h5': {
             name: 'h5',
@@ -3600,7 +3640,8 @@ MediumEditor.extensions = {};
             aria: 'header type five',
             tagNames: ['h5'],
             contentDefault: '<b>H5</b>',
-            contentFA: '<i class="fa fa-header"><sup>5</sup>'
+            contentFA: '<i class="fa fa-header"><sup>5</sup>',
+            contentMI: '<b>H5</b>'
         },
         'h6': {
             name: 'h6',
@@ -3608,7 +3649,8 @@ MediumEditor.extensions = {};
             aria: 'header type six',
             tagNames: ['h6'],
             contentDefault: '<b>H6</b>',
-            contentFA: '<i class="fa fa-header"><sup>6</sup>'
+            contentFA: '<i class="fa fa-header"><sup>6</sup>',
+            contentMI: '<b>H6</b>'
         }
     };
 
@@ -3780,6 +3822,7 @@ MediumEditor.extensions = {};
         tagNames: ['a'],
         contentDefault: '<b>#</b>',
         contentFA: '<i class="fa fa-link"></i>',
+        contentMI: '<i class="material-icons">insert_link</i>',
 
         init: function () {
             MediumEditor.extensions.form.prototype.init.apply(this, arguments);
@@ -3830,13 +3873,24 @@ MediumEditor.extensions = {};
 
             template.push(
                 '<a href="#" class="medium-editor-toolbar-save">',
-                this.getEditorOption('buttonLabels') === 'fontawesome' ? '<i class="fa fa-check"></i>' : this.formSaveLabel,
+                MediumEditor.util.resolveIcon(this, {
+                    st: this.formSaveLabel,
+                    fa: '<i class="fa fa-check"></i>',
+                    mi: '<i class="material-icons">check</i>'
+                }),
                 '</a>'
             );
 
-            template.push('<a href="#" class="medium-editor-toolbar-close">',
-                this.getEditorOption('buttonLabels') === 'fontawesome' ? '<i class="fa fa-times"></i>' : this.formCloseLabel,
-                '</a>');
+            template.push(
+                '<a href="#" class="medium-editor-toolbar-close">',
+                MediumEditor.util.resolveIcon(this, {
+                    st: this.formSaveLabel,
+                    fa: '<i class="fa fa-times"></i>',
+                    mi: '<i class="material-icons">close</i>'
+                }),
+
+                '</a>'
+            );
 
             // both of these options are slightly moot with the ability to
             // override the various form buildup/serialize functions.
@@ -4859,8 +4913,9 @@ MediumEditor.extensions = {};
         name: 'fontname',
         action: 'fontName',
         aria: 'change font name',
-        contentDefault: '&#xB1;', // ±
+        contentDefault: 'F',
         contentFA: '<i class="fa fa-font"></i>',
+        contentMI: '<i class="material-icons">text_format</i>',
 
         fonts: ['', 'Arial', 'Verdana', 'Times New Roman'],
 
@@ -4972,9 +5027,11 @@ MediumEditor.extensions = {};
             // Add save buton
             save.setAttribute('href', '#');
             save.className = 'medium-editor-toobar-save';
-            save.innerHTML = this.getEditorOption('buttonLabels') === 'fontawesome' ?
-                             '<i class="fa fa-check"></i>' :
-                             '&#10003;';
+            save.innerHTML = MediumEditor.util.resolveIcon(this, {
+                st: '&#10003;',
+                fa: '<i class="fa fa-check"></i>',
+                mi: '<i class="material-icons">check</i>'
+            });
             form.appendChild(save);
 
             // Handle save button clicks (capture)
@@ -4983,9 +5040,11 @@ MediumEditor.extensions = {};
             // Add close button
             close.setAttribute('href', '#');
             close.className = 'medium-editor-toobar-close';
-            close.innerHTML = this.getEditorOption('buttonLabels') === 'fontawesome' ?
-                              '<i class="fa fa-times"></i>' :
-                              '&times;';
+            close.innerHTML = MediumEditor.util.resolveIcon(this, {
+                st: '&times;',
+                fa: '<i class="fa fa-times"></i>',
+                mi: '<i class="material-icons">close</i>'
+            });
             form.appendChild(close);
 
             // Handle close button clicks
@@ -5044,8 +5103,9 @@ MediumEditor.extensions = {};
         name: 'fontsize',
         action: 'fontSize',
         aria: 'increase/decrease font size',
-        contentDefault: '&#xB1;', // ±
+        contentDefault: 'S',
         contentFA: '<i class="fa fa-text-height"></i>',
+        contentMI: '<i class="material-icons">text_fields</i>',
 
         init: function () {
             MediumEditor.extensions.form.prototype.init.apply(this, arguments);
@@ -5150,9 +5210,11 @@ MediumEditor.extensions = {};
             // Add save buton
             save.setAttribute('href', '#');
             save.className = 'medium-editor-toobar-save';
-            save.innerHTML = this.getEditorOption('buttonLabels') === 'fontawesome' ?
-                             '<i class="fa fa-check"></i>' :
-                             '&#10003;';
+            save.innerHTML = MediumEditor.util.resolveIcon(this, {
+                st: this.formSaveLabel,
+                fa: '<i class="fa fa-check"></i>',
+                mi: '<i class="material-icons">check</i>'
+            });
             form.appendChild(save);
 
             // Handle save button clicks (capture)
@@ -5161,9 +5223,11 @@ MediumEditor.extensions = {};
             // Add close button
             close.setAttribute('href', '#');
             close.className = 'medium-editor-toobar-close';
-            close.innerHTML = this.getEditorOption('buttonLabels') === 'fontawesome' ?
-                              '<i class="fa fa-times"></i>' :
-                              '&times;';
+            close.innerHTML = MediumEditor.util.resolveIcon(this, {
+                st: this.formSaveLabel,
+                fa: '<i class="fa fa-times"></i>',
+                mi: '<i class="material-icons">close</i>'
+            });
             form.appendChild(close);
 
             // Handle close button clicks
@@ -5213,6 +5277,7 @@ MediumEditor.extensions = {};
 
     MediumEditor.extensions.fontSize = FontSizeForm;
 }());
+
 (function () {
     'use strict';
 
@@ -6006,7 +6071,9 @@ MediumEditor.extensions = {};
                 toolbar.className += ' medium-editor-stalker-toolbar';
             }
 
-            toolbar.appendChild(this.createToolbarButtons());
+            this.createToolbarButtons().forEach(function (row) {
+                toolbar.appendChild(row);
+            });
 
             // Add any forms that extensions may have
             this.forEachExtension(function (extension) {
@@ -6021,19 +6088,37 @@ MediumEditor.extensions = {};
         },
 
         createToolbarButtons: function () {
+            var rows = [];
+
+            if (Array.isArray(this.buttons[0])) {
+                this.buttons.forEach(function (row, index) {
+                    rows.push(this.createToolbarButtonsRow(row, index));
+                }, this);
+            } else {
+                rows.push(this.createToolbarButtonsRow(this.buttons, 0));
+            }
+
+            return rows;
+        },
+
+        createToolbarButtonsRow: function (buttons, index) {
             var ul = this.document.createElement('ul'),
                 li,
                 btn,
-                buttons,
+                buttonEls,
                 extension,
                 buttonName,
                 buttonOpts;
 
             ul.id = 'medium-editor-toolbar-actions' + this.getEditorId();
+            if (index > 0) {
+                // Preserve backward compatibility and add index only for extra rows
+                ul.id += '-' + index;
+            }
             ul.className = 'medium-editor-toolbar-actions';
             ul.style.display = 'block';
 
-            this.buttons.forEach(function (button) {
+            buttons.forEach(function (button) {
                 if (typeof button === 'string') {
                     buttonName = button;
                     buttonOpts = null;
@@ -6058,10 +6143,10 @@ MediumEditor.extensions = {};
                 }
             }, this);
 
-            buttons = ul.querySelectorAll('button');
+            buttonEls = ul.querySelectorAll('button');
             if (buttons.length > 0) {
-                buttons[0].classList.add(this.firstButtonClass);
-                buttons[buttons.length - 1].classList.add(this.lastButtonClass);
+                buttonEls[0].classList.add(this.firstButtonClass);
+                buttonEls[buttonEls.length - 1].classList.add(this.lastButtonClass);
             }
 
             return ul;
@@ -6091,7 +6176,13 @@ MediumEditor.extensions = {};
         },
 
         getToolbarActionsElement: function () {
-            return this.getToolbarElement().querySelector('.medium-editor-toolbar-actions');
+            // For backward compatibility
+            return this.getToolbarActionsElements()[0];
+        },
+
+        getToolbarActionsElements: function () {
+            var els = this.getToolbarElement().querySelectorAll('.medium-editor-toolbar-actions');
+            return Array.prototype.slice.call(els);
         },
 
         // Toolbar event handlers
@@ -6204,7 +6295,9 @@ MediumEditor.extensions = {};
 
         hideToolbarDefaultActions: function () {
             if (this.isToolbarDefaultActionsDisplayed()) {
-                this.getToolbarActionsElement().style.display = 'none';
+                this.getToolbarActionsElements().forEach(function (el) {
+                    el.style.display = 'none';
+                });
             }
         },
 
@@ -6212,7 +6305,9 @@ MediumEditor.extensions = {};
             this.hideExtensionForms();
 
             if (!this.isToolbarDefaultActionsDisplayed()) {
-                this.getToolbarActionsElement().style.display = 'block';
+                this.getToolbarActionsElements().forEach(function (el) {
+                    el.style.display = 'block';
+                });
             }
 
             // Using setTimeout + options.delay because:

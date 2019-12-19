@@ -6,8 +6,9 @@
         name: 'fontname',
         action: 'fontName',
         aria: 'change font name',
-        contentDefault: '&#xB1;', // ±
+        contentDefault: 'F',
         contentFA: '<i class="fa fa-font"></i>',
+        contentMI: '<i class="material-icons">text_format</i>',
 
         fonts: ['', 'Arial', 'Verdana', 'Times New Roman'],
 
@@ -119,9 +120,11 @@
             // Add save buton
             save.setAttribute('href', '#');
             save.className = 'medium-editor-toobar-save';
-            save.innerHTML = this.getEditorOption('buttonLabels') === 'fontawesome' ?
-                             '<i class="fa fa-check"></i>' :
-                             '&#10003;';
+            save.innerHTML = MediumEditor.util.resolveIcon(this, {
+                st: '&#10003;',
+                fa: '<i class="fa fa-check"></i>',
+                mi: '<i class="material-icons">check</i>'
+            });
             form.appendChild(save);
 
             // Handle save button clicks (capture)
@@ -130,9 +133,11 @@
             // Add close button
             close.setAttribute('href', '#');
             close.className = 'medium-editor-toobar-close';
-            close.innerHTML = this.getEditorOption('buttonLabels') === 'fontawesome' ?
-                              '<i class="fa fa-times"></i>' :
-                              '&times;';
+            close.innerHTML = MediumEditor.util.resolveIcon(this, {
+                st: '&times;',
+                fa: '<i class="fa fa-times"></i>',
+                mi: '<i class="material-icons">close</i>'
+            });
             form.appendChild(close);
 
             // Handle close button clicks

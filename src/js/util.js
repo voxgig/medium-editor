@@ -1156,6 +1156,12 @@
             }
 
             return _s4() + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + '-' + _s4() + _s4() + _s4();
+        },
+
+        resolveIcon: function (ext, iconmap) {
+            var buttonLabels = ext.getEditorOption('buttonLabels'),
+                btnlabelcode = buttonLabels === 'fontawesome' ? 'fa' : buttonLabels === 'fa' ? 'fa' : buttonLabels === 'material' ? 'mi' : buttonLabels === 'mi' ? 'mi' : 'st';
+            return iconmap[btnlabelcode];
         }
     };
 

@@ -75,6 +75,12 @@
          */
         contentFA: undefined,
 
+        /* contentMI: [string]
+         * The innerHTML to use for the content of the button
+         * if the `buttonLabels` option for MediumEditor is set to 'material'
+         */
+        contentMI: undefined,
+
         /* classList: [Array]
          * An array of classNames (strings) to be added to the button
          */
@@ -153,9 +159,14 @@
                 }, this);
             }
 
-            if (buttonLabels === 'fontawesome' && this.contentFA) {
+            if ((buttonLabels === 'fontawesome' || buttonLabels === 'fa') && this.contentFA) {
                 content = this.contentFA;
             }
+
+            if ((buttonLabels === 'material' || buttonLabels === 'mi') && this.contentMI) {
+                content = this.contentMI;
+            }
+
             button.innerHTML = content;
             return button;
         },
