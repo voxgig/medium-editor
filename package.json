@@ -69,6 +69,8 @@
     "test": "node node_modules/grunt-cli/bin/grunt test --verbose",
     "test:ci": "node node_modules/grunt-cli/bin/grunt travis --verbose",
     "start": "open ./demo/index.html",
-    "build": "node node_modules/grunt-cli/bin/grunt"
+    "build": "node node_modules/grunt-cli/bin/grunt",
+    "clean": "rm -rf node_modules package-lock.json yarn.lock",
+    "reset": "npm run clean && npm i && npm test"
   }
 }
