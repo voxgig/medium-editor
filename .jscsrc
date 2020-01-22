@@ -29,7 +29,7 @@
   "disallowSpacesInsideBrackets": true,
   "disallowSpacesInsideParentheses": true,
   "disallowTrailingComma": true,
-  "disallowTrailingWhitespace": true,
+  "disallowTrailingWhitespace": false,
   "requireBlocksOnNewline": true,
   "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireCapitalizedConstructors": true,
