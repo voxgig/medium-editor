@@ -201,7 +201,8 @@ module.exports = function (grunt) {
                 'dist/css/themes/mani.css': 'src/sass/themes/mani.scss',
                 'dist/css/themes/roman.css': 'src/sass/themes/roman.scss',
                 'dist/css/themes/tim.css': 'src/sass/themes/tim.scss',
-                'dist/css/themes/beagle.css': 'src/sass/themes/beagle.scss'
+                'dist/css/themes/beagle.css': 'src/sass/themes/beagle.scss',
+                'dist/css/themes/voxgig.css': 'src/sass/themes/voxgig.scss'
             }
         }
     };

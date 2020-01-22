@@ -122,7 +122,7 @@
 
             // Add save buton
             save.setAttribute('href', '#');
-            save.className = 'medium-editor-toobar-save';
+            save.className = 'medium-editor-toolbar-save';
             save.innerHTML = MediumEditor.util.resolveIcon(this, {
                 st: '&#10003;',
                 fa: '<i class="fa fa-check"></i>',
@@ -135,7 +135,7 @@
 
             // Add close button
             close.setAttribute('href', '#');
-            close.className = 'medium-editor-toobar-close';
+            close.className = 'medium-editor-toolbar-close';
             close.innerHTML = MediumEditor.util.resolveIcon(this, {
                 st: '&times;',
                 fa: '<i class="fa fa-times"></i>',
