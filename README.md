@@ -7,7 +7,23 @@ Modifications made for the voxgig.com site editor:
 * Support material icons
 
 
+# DEV PROCESS
 
+* edit code
+* `npm run build`
+* open demo html files in browser (code is loaded from `dist` folder)
+
+## TESTS
+
+The tests are incredibly fragile as they rely on HTML structure. Some
+old tests (noted in source) seem to have been broken for a long
+time. The `dist` folder was committed which may have masked this from
+casual maintainers.
+
+
+
+
+---
 
 If you would be interested in helping to maintain one of the most successful WYSIWYG text editors on github, let us know!  (See issue [#1503](https://github.com/yabwe/medium-editor/issues/1503))
 

@@ -36,6 +36,7 @@
             if (!this.form) {
                 this.form = this.createForm();
             }
+                   
             return this.form;
         },
 
@@ -93,8 +94,8 @@
                 form = doc.createElement('div'),
                 select = doc.createElement('select'),
                 close = doc.createElement('a'),
-                save = doc.createElement('a'),
-                option;
+                save = doc.createElement('a');
+            //option;
 
             // Font Name Form (div)
             form.className = 'medium-editor-toolbar-form';
@@ -104,13 +105,15 @@
             this.on(form, 'click', this.handleFormClick.bind(this));
 
             // Add font names
+            /*
             for (var i = 0; i<this.fonts.length; i++) {
                 option = doc.createElement('option');
                 option.innerHTML = this.fonts[i];
                 option.value = this.fonts[i];
                 select.appendChild(option);
             }
-
+            */
+          
             select.className = 'medium-editor-toolbar-select';
             form.appendChild(select);
 
@@ -147,7 +150,24 @@
         },
 
         getSelect: function () {
-            return this.getForm().querySelector('select.medium-editor-toolbar-select');
+            var select = this.getForm().querySelector('select.medium-editor-toolbar-select'),
+                fontstr = this.fonts.join('|');
+     
+            if (fontstr !== select.getAttribute('data-fontstr')) {     
+
+                // Update font names
+                select.innerHTML = '';
+                for (var i = 0; i<this.fonts.length; i++) {
+                    var option = this.document.createElement('option');
+                    option.innerHTML = this.fonts[i];
+                    option.value = this.fonts[i];
+                    select.appendChild(option);
+                }
+
+                select.setAttribute('data-fontstr', fontstr);
+            }
+          
+            return select;
         },
 
         clearFontName: function () {
