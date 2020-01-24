@@ -45,3 +45,7 @@ document.getElementById('sel-themes').addEventListener('change', function () {
   cssLink.href = '../dist/css/' + this.value + '.css';
 });
 
+
+editor.subscribe('selectFont', function() {
+  console.log('EVENT selectFont', arguments)
+})

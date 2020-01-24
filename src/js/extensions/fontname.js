@@ -184,6 +184,7 @@
                 this.clearFontName();
             } else {
                 this.execAction('fontName', { value: font });
+                this.trigger('selectFont', { face: font }, null);
             }
         },
 
